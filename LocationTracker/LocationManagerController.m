@@ -279,23 +279,24 @@ static LocationManagerController *sharedInstance = nil;
 
 - (void)initListener
 {
-	// Listen for 'did become active' of application
-	[[NSNotificationCenter defaultCenter] addObserver: self
-											 selector: @selector(update:)
-												 name: UIApplicationDidBecomeActiveNotification
-											   object: nil];
+    // Listen for 'did become active' of application
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                            selector: @selector(update:)
+                                                 name: UIApplicationDidBecomeActiveNotification
+                                               object: nil];
     
-	// Listen for application enters background
-	[[NSNotificationCenter defaultCenter] addObserver: self
-											 selector: @selector(update:)
-												 name: UIApplicationDidEnterBackgroundNotification
-											   object: nil];
+    // Listen for application enters background
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(update:)
+                                                 name: UIApplicationDidEnterBackgroundNotification
+                                               object: nil];
 }
 
 - (void)dealloc
 {
     [self stop];
     [self stopSignificant];
+    self.locationUpdateQueue = nil;
 }
 
 #pragma mark - Notification-trigger update.
