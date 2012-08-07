@@ -168,8 +168,8 @@ static LocationManagerController *sharedInstance = nil;
             if (self.isUpdatingLocation)
             {
                 NSLog(@"Switch to significant change monitoring.");
-                [self stop];
                 [self startSignificant];
+                [self stop];
             }
             [self updateDataStore:self.bestEffortAtLocation];
             self.bestEffortAtLocation = nil;
@@ -184,8 +184,8 @@ static LocationManagerController *sharedInstance = nil;
                 if (self.isUpdatingLocation)
                 {
                     NSLog(@"Switch to significant change monitoring.");
-                    [self stop];
                     [self startSignificant];
+                    [self stop];
                 }
                 [self updateDataStore:self.bestEffortAtLocation];
                 self.bestEffortAtLocation = nil;

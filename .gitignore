@@ -12,6 +12,5 @@ build/*
 xcuserdata
 profile
 *.moved-aside
-Podfile
 Podfile.lock
 Pods/
