@@ -87,6 +87,7 @@ static LocationManagerController *sharedInstance = nil;
         return _locationManager;
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.desiredAccuracy = self.locationAccuracy;
+    _locationManager.activityType = CLActivityTypeFitness;
     _locationManager.delegate = self;
     return _locationManager;
 }
@@ -168,8 +169,8 @@ static LocationManagerController *sharedInstance = nil;
             if (self.isUpdatingLocation)
             {
                 NSLog(@"Switch to significant change monitoring.");
-                [self startSignificant];
                 [self stop];
+                [self startSignificant];
             }
             [self updateDataStore:self.bestEffortAtLocation];
             self.bestEffortAtLocation = nil;
@@ -184,8 +185,8 @@ static LocationManagerController *sharedInstance = nil;
                 if (self.isUpdatingLocation)
                 {
                     NSLog(@"Switch to significant change monitoring.");
-                    [self startSignificant];
                     [self stop];
+                    [self startSignificant];
                 }
                 [self updateDataStore:self.bestEffortAtLocation];
                 self.bestEffortAtLocation = nil;
